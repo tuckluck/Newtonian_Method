@@ -1,6 +1,6 @@
 
 #Newtonian method with multiple degrees of freedom
-from NewtonMethod import Newtonian_Method as nm
+from NewtonMethod import Newton_Method as nm
 import numpy as np
 import sympy as sp
 from pathlib import Path
