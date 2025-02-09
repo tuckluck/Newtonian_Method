@@ -53,9 +53,9 @@ If you would like, you can also open python and check to make sure that the impo
 (tl_Newton-env) $ python
 Python 3.12.8 | packaged by Anaconda, Inc. | (main, Dec 11 2024, 11:37:13) [Clang 14.0.6 ] on darwin
 Type "help", "copyright", "credits" or "license" for more information.
->>> from Newtonian_Method import Newtonian_Method as nm
+>>> import Newtonian_Method as nm
 >>> nm.Welcome()
-'hello world'
+'Welcome to Newtonian Method Solver!'
 ```
 If you are using VSCode to run this code, don't forget to set VSCode virtual environment to bisection-method-env.
 
