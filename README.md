@@ -53,7 +53,7 @@ If you would like, you can also open python and check to make sure that the impo
 (tl_Newton-env) $ python
 Python 3.12.8 | packaged by Anaconda, Inc. | (main, Dec 11 2024, 11:37:13) [Clang 14.0.6 ] on darwin
 Type "help", "copyright", "credits" or "license" for more information.
->>> import Newtonian_Method as nm
+>>> from NewtonMethod import Newton_Method as nm
 >>> nm.Welcome()
 'Welcome to Newtonian Method Solver!'
 ```
