@@ -1,5 +1,5 @@
 # Newtonian_Method
-# 1_warmup
+
 
 
 [![python](https://img.shields.io/badge/python-3.12-blue.svg)](https://www.python.org/)
