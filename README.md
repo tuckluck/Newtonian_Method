@@ -21,12 +21,12 @@ I used chatGPT while creating this function to learn how to read symbols from eq
 
 To install this package, please begin by setting up a conda environment (mamba also works):
 ```bash
-conda create --name tl_bisection-env python=3.12
+conda create --name tl_Newton-env python=3.12
 ```
 Once the environment has been created, activate it:
 
 ```bash
-conda activate tl_bisection-env
+conda activate tl_Newton-env
 ```
 Double check that python is version 3.12 in the environment:
 ```bash
@@ -40,6 +40,25 @@ Create an editable install of the bisection method code (note: you must be in th
 ```bash
 pip install -e .
 ```
+
+
+Test that the code is working with pytest:
+```bash
+pytest -v --cov=Newtonian_Method --cov-report term-missing
+```
+Code coverage should be 100%. Now you are prepared to write your own code based on this method and/or run the tutorial. 
+
+If you would like, you can also open python and check to make sure that the import works properly:
+```bash
+(tl_Newton-env) $ python
+Python 3.12.8 | packaged by Anaconda, Inc. | (main, Dec 11 2024, 11:37:13) [Clang 14.0.6 ] on darwin
+Type "help", "copyright", "credits" or "license" for more information.
+>>> from Newtonian_Method import Newtonian_Method as nm
+>>> nm.Welcome()
+'hello world'
+```
+If you are using VSCode to run this code, don't forget to set VSCode virtual environment to bisection-method-env.
+
 Open in Juypter
 
 ```bash
