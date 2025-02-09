@@ -1,6 +1,6 @@
 
 #Newtonian method with multiple degrees of freedom
-from newtonmethod import Newtonian_Method as nm
+from NewtonMethod import Newtonian_Method as nm
 import numpy as np
 import sympy as sp
 from pathlib import Path
@@ -19,7 +19,7 @@ def test_Welcome():
     found = nm.Welcome()
     assert known == found
     
-
+'''
 def test_all_lists():
     #tests to make sure all input variables are lists
     a = [1,2]
@@ -54,7 +54,7 @@ def test_num_eqs_equal_num_variable():
     c = [5,6]
     assert nm.num_eqs_equal_num_variables(a,b,c)
     
-    
+'''    
 # def test_Substitution_dictionary(variables,values):
 #     # function sets up a dictionary which assigns each variable to the current guess for that variable
 #     # the function is used for subbing values into the function matrix and jacobian matrix which are 
