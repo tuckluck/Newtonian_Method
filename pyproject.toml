@@ -3,12 +3,12 @@ requires = ["setuptools>=61.0"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "tl_bisect"
+name = "tl_Newtonian"
 version = "0.0.0"
 authors = [
   { name="Tucker Lyle" },
 ]
-description = "bisectionmethod workflow"
+description = "Newtonian_Method workflow"
 readme = "README.md"
 license = { file="LICENSE" }
 requires-python = ">=3.9"
@@ -27,4 +27,4 @@ dependencies = [
 ]
 
 [project.urls]
-"Homepage" = "https://github.com/tuckluck/1_warmup.git"
+"Homepage" = "https://github.com/tuckluck/Newtonian_Method.git"
