@@ -1,110 +1,98 @@
 
 #Newtonian method with multiple degrees of freedom
 from NewtonMethod import Newton_Method as nm
-import numpy as np
-import sympy as sp
-from pathlib import Path
 import pytest
-import re
-
-q,w,e,r,t,y,u,i,o,p,a,s,d,f,g,h,j,k,l,z,x,c,v,b,n,m = sp.symbols('q w e r t y u i o p a s d f g h j k l z x c v b n m')
-symb_matrix = sp.Matrix([q,w,e,r,t,y,u,i,o,p,a,s,d,f,g,h,j,k,l,z,x,c,v,b,n,m])
-#sets up all possible letters as possible variables so the user has flexibility with how they want to set up their equations
+import sympy as sp
+import numpy as np
 
 
-def test_Welcome(): 
-    
-    #function purpose is to test to make sure import worked correctly
-    known = "Welcome To Newtonian Method Solver!"
-    found = nm.Welcome()
-    assert known == found
-    
-'''
+)
+
+# Define symbolic variables for testing
+x, y = sp.symbols('x y')
+
+# Sample function system: f1 = x^2 + y^2 - 4, f2 = x*y - 1
+function_list = [x**2 + y**2 - 4, x*y - 1]
+variable_list = [x, y]
+guess_list = [2, 0.5]
+
+# Expected solution (approximately)
+expected_solution = sp.Matrix([sp.sqrt(2), 1/sp.sqrt(2)])
+
+# ----------------------------------------------
+# TESTS
+# ----------------------------------------------
+
+def test_welcome():
+    """Test Welcome function output"""
+    assert nm.Welcome() == "Welcome To Newtonian Method Solver!"
+
 def test_all_lists():
-    #tests to make sure all input variables are lists
-    a = [1,2]
-    b = [3,4]
-    c = [5,6]
-    found = nm.all_tests(a,b,c)
-    known = True
-    assert known == found
+    """Test all_lists function for correct type validation"""
+    # Should pass without raising an error
+    nm.all_lists([x+y, x**2], [x, y], [1, 2])
 
-def test_max_iterations_reached():
-    # function tests max iterations, function outline taken from Professor Lejeune's bisection method test file
-    try:
-        num_iter = 100
-        max_iter = 1000
-        nm.max_iterations_reached(max_iter,num_iter)
-    except ValueError:
-        pytest.fail("Unexpected ValueError raised for num_iter <= max_iter.")
-    num_iter = 1001
-    max_iter = 1000
-    with pytest.raises(ValueError, match=re.escape(f"Maximum number of iterations ({max_iter}) reached without convergence")):
-        nm.max_iterations_reached(max_iter,num_iter)
-    with pytest.raises(ValueError) as excinfo:
-        num_iter = 11
-        max_iter = 10
-        nm.max_iterations_reached(max_iter,num_iter)
-    assert str(excinfo.value) == "Maximum number of iterations (%i) reached without convergence" % (max_iter)
+    # Should raise ValueError for incorrect types
+    with pytest.raises(ValueError):
+        nm.all_lists("not a list", [x, y], [1, 2])
 
 def test_num_eqs_equal_num_variable():
-    # function tests to make sure all input lists are of the same length
-    a = [1,2]
-    b = [3,4]
-    c = [5,6]
-    assert nm.num_eqs_equal_num_variables(a,b,c)
-    
-'''    
-# def test_Substitution_dictionary(variables,values):
-#     # function sets up a dictionary which assigns each variable to the current guess for that variable
-#     # the function is used for subbing values into the function matrix and jacobian matrix which are 
-#     # filled with variables
-#     variables_T = variables.T
-#     values_T = values.T
-#     sub_dict = {variables_T[i]: values_T[i] for i in range(variables_T.shape[1])}
-#     return sub_dict
+    """Test that function, variable, and guess lists have the same length"""
+    # Should pass
+    nm.num_eqs_equal_num_variable([x+y, x**2], [x, y], [1, 2])
 
-# def test_populate_jacobian(jacobian,variables,values):
-#     #function is used to populate the jacobian matrix with values instead of variables, the substituion
-#     #dictionary function helps with choosing the correct value to sub in for each variable
-#     jacobian_values = jacobian.subs(Substitution_dictionary(variables,values))
-#     return jacobian_values
+    # Should raise ValueError if lengths mismatch
+    with pytest.raises(ValueError):
+        nm.num_eqs_equal_num_variable([x+y, x**2], [x], [1, 2])
 
-# def test_populate_functions(functions,variables,values):
-#     #this function is used to populate the function matrix with values instead of variables, similar to 
-#     #the jacobian matrix, it subs in values using the substitution dictionary
-#     F_values = functions.subs(Substitution_dictionary(variables,values))
-#     return F_values
+def test_max_iterations_reached():
+    """Test the max_iterations_reached function"""
+    # Should pass
+    nm.max_iterations_reached(10, 5)
 
-# def test_inverse_jacobian(jacobian_new):
-#     #this funciton takes the inverse of the jacobian for the calculation in the while loop in the main function
-#     #this function will spit out an error if the inverse of the jacobian is not possible
-#     if jacobian_new.det()!=0:
-#         inv_jacobian = jacobian_new.inv()
-#         return inv_jacobian
-#     else:
-#         raise ValueError("Maximum Iterations Rearched, your guess or equations may be incorrect")
-        
+    # Should raise ValueError when iteration count exceeds max
+    with pytest.raises(ValueError):
+        nm.max_iterations_reached(10, 15)
+
+def test_substitution_dictionary():
+    """Test substitution dictionary creation"""
+    variables = sp.Matrix([x, y])
+    values = sp.Matrix([1, 2])
+    sub_dict = nm.Substitution_dictionary(variables, values)
+
+    expected_dict = {x: 1, y: 2}
+    assert sub_dict == expected_dict
+
+def test_populate_jacobian():
+    """Test Jacobian matrix substitution"""
+    functions = sp.Matrix([x**2 + y, x*y])
+    variables = sp.Matrix([x, y])
+    values = sp.Matrix([1, 2])
+
+    jacobian = functions.jacobian(variables)
+    populated = nm.populate_jacobian(jacobian, variables, values)
+
+    expected_jacobian = sp.Matrix([[2*1, 1], [2, 1]])
+    assert populated == expected_jacobian
+
+def test_inverse_jacobian():
+    """Test the inverse of a Jacobian matrix"""
+    matrix = sp.Matrix([[2, 1], [1, 3]])
     
-# def test_Newtonian_multi_DOF(function_list,variable_list,guess_list,tolerance = .1, max_iterations = 100):
-#     num_eqs_equal_num_variable(function_list,variable_list,guess_list)   #tests to make sure all lists are of same length
-#     all_lists(function_list,variable_list,guess_list) #tests to make sure all inputs are lists
-#     functions = sp.Matrix(function_list)              #turns list into matrix
-#     variables = sp.Matrix(variable_list)              #turns list into matrix
-#     guesses = sp.Matrix(guess_list)                   #turns list into matrix
-#     var_jacobian = functions.jacobian(variables)      #creates the jacobian matrix from the function and variavbles chosen
-    
-#     xn = guesses                                    # initializes xn matrix with our initial guesses
-#     F = populate_functions(functions,variables,xn)  #F is the function matrix with guesses subbed in for variables
-#     count = 0                                       # initialize the count to break out of the while loop if too many iterations
-#     while F.norm() > tolerance:                     # compares value to chosen tolerance
-#         val_jacobian = populate_jacobian(var_jacobian,variables,xn)   #fills variable jacobian with current guesses
-#         F = populate_functions(functions,variables,xn)                #fills variable functions with current guesses
-#         del_x = -inverse_jacobian(val_jacobian)*F                     #calculates delta x
-#         xn = xn + del_x                                               #improves guess list
-#         count = count+1                                               #updates count
-#         max_iterations_reached(max_iterations,count)                  #breaks out of while loop if max iterations reached
-        
-#     return xn
-    
-    
+    # Should pass
+    inv_matrix = nm.inverse_jacobian(matrix)
+    expected_inv = matrix.inv()
+    assert inv_matrix == expected_inv
+
+    # Singular matrix case should raise ValueError
+    singular_matrix = sp.Matrix([[1, 2], [2, 4]])
+    with pytest.raises(ValueError):
+        nm.inverse_jacobian(singular_matrix)
+
+def test_newtonian_solver():
+    """Test Newtonian multi-DOF solver on a simple system"""
+    solution = nm.Newtonian_multi_DOF(function_list, variable_list, guess_list, tolerance=1e-4)
+
+    # Check if solution is close to expected
+    assert solution[0].evalf() == pytest.approx(expected_solution[0].evalf(), rel=1e-4)
+    assert solution[1].evalf() == pytest.approx(expected_solution[1].evalf(), rel=1e-4)
