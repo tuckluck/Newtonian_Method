@@ -16,6 +16,7 @@ ME 700 Assignment 1 - Newton Solver
 This tutorial aims to show a user how to use the "Newton_Method" function to solve difficult, multi-variable, systems of equations. The function, as outlined below, allows the user to enter an equations, and a guess for the solution. The solver will then find the nearest solution to your guess if there are multiple solutions or the single solution if only one exists. 
 
 Example of calling the function:
+
 from NewtonMethod import Newton_Method as nm
 nm.Newtonian_multi_DOF([3*x+1],[x],[-5])
 
