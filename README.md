@@ -7,6 +7,7 @@
 [![license](https://img.shields.io/badge/license-MIT-green.svg)](https://github.com/sandialabs/sibl#license)
 
 
+[![codecov](https://codecov.io/gh/tuckluck/Newtonian_Method/graph/badge.svg?token=TKF4CLV1G5)](https://codecov.io/gh/tuckluck/Newtonian_Method)
 
 
 
