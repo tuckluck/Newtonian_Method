@@ -36,7 +36,7 @@ Ensure that pip is using the most up to date version of setuptools:
 ```bash
 pip install --upgrade pip setuptools wheel
 ```
-Create an editable install of the bisection method code (note: you must be in the correct directory):
+Create an editable install of the Newtonian method code (note: you must be in the correct directory):
 ```bash
 pip install -e .
 ```
@@ -66,7 +66,7 @@ pip install jupyter
 ```
 
 ```bash
-jupyter notebook P1_bisect_test_cases.ipynb
+jupyter notebook Newton_tutorial.ipynb
 ```
 ---
 
