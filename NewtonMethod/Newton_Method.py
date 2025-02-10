@@ -83,7 +83,10 @@ def Newtonian_multi_DOF(function_list,variable_list,guess_list,tolerance = .1, m
         count = count+1                                               #updates count
         max_iterations_reached(max_iterations,count)                  #breaks out of while loop if max iterations reached
         
-    return xn
+    solution_float = xn.evalf()
+    
+    return solution_float
+    
     
     
     
