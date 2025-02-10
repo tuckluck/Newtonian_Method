@@ -8,7 +8,7 @@
 
 
 [![codecov](https://codecov.io/gh/tuckluck/Newtonian_Method/graph/badge.svg?token=TKF4CLV1G5)](https://codecov.io/gh/tuckluck/Newtonian_Method)
-[![tests](https://github.com/tuckluck/Newtonian_Method/actions/workflows/NMtests.yml/badge.svg)](https://github.com/tuckluck/Newtonian_Method/actions)
+[![tests](https://github.com/tuckluck/Newtonian_Method/actions/workflows/python-package-conda.yml/badge.svg)](https://github.com/tuckluck/Newtonian_Method/actions)
 
 
 
