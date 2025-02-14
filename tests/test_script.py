@@ -1,8 +1,9 @@
 import pytest
 import sympy as sp
 import numpy as np
-import matplotlib.pyplot as plt
+import matplotlib
 matplotlib.use('Agg')  # Use a non-interactive backend to avoid GUI issues
+import matplotlib.pyplot as plt
 from Scripts import Newton_and_ElastoPlastic as nm
    
 
