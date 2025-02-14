@@ -1,6 +1,7 @@
 import pytest
 import sympy as sp
 import numpy as np
+import matplotlib.pyplot as plt
 from Scripts import Newton_and_ElastoPlastic as nm
    
 
