@@ -206,7 +206,7 @@ def test_run_Iso_Hardening():
     strain_vec = nm.create_strain_vector([10, -10, 10, -10], between_steps=5)
     
     fig, ax = plt.subplots()
-    nm.run_Iso_Hardening(mat.mat_properties(), strain_vec)
+    nm.run_Iso_Hardening(mat, mat.mat_properties(), strain_vec)
     
     return fig
 
@@ -220,7 +220,7 @@ def test_run_Kinematic_Hardening():
     strain_vec = nm.create_strain_vector([10, -10, 10, -10], between_steps=5)
     
     fig, ax = plt.subplots()
-    nm.run_Kinematic_Hardening(mat.mat_properties(), strain_vec)
+    nm.run_Kinematic_Hardening(mat, mat.mat_properties(), strain_vec)
     
     return fig
 
