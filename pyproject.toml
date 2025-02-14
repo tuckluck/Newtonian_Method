@@ -26,5 +26,9 @@ dependencies = [
     "sympy==1.10.1"
 ]
 
+[project.scripts]
+NewtonMethod = "NewtonMethod.Newton_Method:main"  
+ElastoPlastic = "ElastoPlastic.Elasto_Plastic:main"  
+
 [project.urls]
 "Homepage" = "https://github.com/tuckluck/Part1.git"
