@@ -196,4 +196,30 @@ def test_create_strain_vector():
     assert strain_vec[0] == 0  # Always starts at zero
     assert strain_vec[-1] == -10  # Last value should match last input
 
+@pytest.mark.mpl_image_compare
+def test_run_Iso_Hardening():
+    """Test the isotropic hardening plot for validity."""
+    mat = nm.Isotropic_Material(stress_current=0, plastic_strain_current=0, 
+                             elastic_mod=200, plastic_mod=10, yield_stress=250)
+    
+    strain_vec = nm.create_strain_vector([10, -10, 10, -10], between_steps=5)
+    
+    fig, ax = plt.subplots()
+    nm.run_Iso_Hardening(mat.mat_properties(), strain_vec)
+    
+    return fig
+
+@pytest.mark.mpl_image_compare
+def test_run_Kinematic_Hardening():
+    """Test the kinematic hardening plot for validity."""
+    mat = nm.Kinematic_Material(stress_current=0, back_stress_current=0, 
+                             plastic_strain_current=0, elastic_mod=200, 
+                             plastic_mod=10, yield_stress=250)
+    
+    strain_vec = nm.create_strain_vector([10, -10, 10, -10], between_steps=5)
+    
+    fig, ax = plt.subplots()
+    nm.run_Kinematic_Hardening(mat.mat_properties(), strain_vec)
+    
+    return fig
 
