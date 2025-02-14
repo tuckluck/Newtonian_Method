@@ -33,7 +33,7 @@ jobs:
         run: pip install pytest pytest-cov
 
       - name: Run tests with coverage
-        run: pytest --cov=NewtonMethod --cov-report=xml
+        run: pytest --cov=Scripts --cov-report=xml
         # Replace 'my_package' with your actual package name
 
       - name: Upload coverage to Codecov
