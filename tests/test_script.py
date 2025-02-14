@@ -139,9 +139,9 @@ def test_newtonian_multi_DOF():
     assert sol_2 == pytest.approx(exp_2, rel=1e-4)
 
 
-import pytest
-import numpy as np
-from your_module import Isotropic_Material, Kinematic_Material, create_strain_vector
+#--------------------------------------------------------------------------
+#Below are tests for Elasto_Plastic
+
 
 def test_isotropic_material_initialization():
     mat = nm.Isotropic_Material(stress_current=10, plastic_strain_current=0.02,
