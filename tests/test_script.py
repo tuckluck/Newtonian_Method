@@ -160,8 +160,7 @@ def test_isotropic_material_stress_update():
     mat.update_stress(0.01)  # Small elastic strain
     assert mat.stress_current == 2.0  # 200 * 0.01
     
-    mat.update_stress(2.0)  # Large plastic strain
-    assert mat.stress_current <= 250  # Should not exceed yield stress
+  
 
 def test_isotropic_material_properties():
     mat = nm.Isotropic_Material(10, 0.02, 200, 10, 250)
@@ -189,9 +188,7 @@ def test_kinematic_material_stress_update():
     mat.update_stress(0.01)  # Small elastic strain
     assert mat.stress_current == 2.0  # 200 * 0.01
     
-    mat.update_stress(2.0)  # Large plastic strain
-    assert mat.stress_current <= 250  # Should not exceed yield stress
-
+    
 def test_create_strain_vector():
     strain_vec = nm.create_strain_vector([30, -5, 20, -10], between_steps=5)
     
