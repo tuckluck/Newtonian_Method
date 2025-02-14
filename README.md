@@ -7,8 +7,8 @@
 [![license](https://img.shields.io/badge/license-MIT-green.svg)](https://github.com/sandialabs/sibl#license)
 
 
-[![codecov](https://codecov.io/gh/tuckluck/Newtonian_Method/graph/badge.svg?token=TKF4CLV1G5)](https://codecov.io/gh/tuckluck/Newtonian_Method)
-[![tests](https://github.com/tuckluck/Newtonian_Method/actions/workflows/tests.yml/badge.svg)](https://github.com/tuckluck/Newtonian_Method/actions)
+[![codecov](https://codecov.io/gh/tuckluck/Part1/graph/badge.svg?token=TKF4CLV1G5)](https://codecov.io/gh/tuckluck/Part1)
+[![tests](https://github.com/tuckluck/Part1/actions/workflows/tests.yml/badge.svg)](https://github.com/tuckluck/Part1/actions)
 
 
 
