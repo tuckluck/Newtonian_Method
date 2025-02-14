@@ -169,7 +169,7 @@ def create_strain_vector(vector,between_steps = 100):
                     
     return out_vec
 
-def run_Iso_Hardening(mat_properties, strain_vec):
+def run_Iso_Hardening(My_mat, mat_properties, strain_vec):
     #code used to run the Isometric Hardening simulation. Will output graph automatically
     stress = np.zeros(len(strain_vec))  #initialize stress vector to be filled
     strain = strain_vec
@@ -239,7 +239,7 @@ class Kinematic_Material:
             self.plastic_strain_current = self.plastic_strain_current + del_plastics_strain
         
 
-def run_Kinematic_Hardening(mat_properties, strain_vec):
+def run_Kinematic_Hardening(My_mat, mat_properties, strain_vec):
     #code to run the Kinematic Hardening scenerio, will run a plot automatically
     stress = np.zeros(len(strain_vec))
     strain = strain_vec
