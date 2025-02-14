@@ -205,7 +205,7 @@ def test_run_Iso_Hardening_no_error():
     strain_vec = nm.create_strain_vector([10, -10, 10, -10], between_steps=5)
 
     try:
-        nm.run_Iso_Hardening(mat.mat_properties(), strain_vec)
+        nm.run_Iso_Hardening(mat, mat.mat_properties(), strain_vec)
     except Exception as e:
         pytest.fail(f"run_Iso_Hardening raised an error: {e}")
 
@@ -218,6 +218,6 @@ def test_run_Kinematic_Hardening_no_error():
     strain_vec = nm.create_strain_vector([10, -10, 10, -10], between_steps=5)
 
     try:
-        nm.run_Kinematic_Hardening(mat.mat_properties(), strain_vec)
+        nm.run_Kinematic_Hardening(mat, mat.mat_properties(), strain_vec)
     except Exception as e:
         pytest.fail(f"run_Kinematic_Hardening raised an error: {e}")
