@@ -1,4 +1,4 @@
-# Newtonian_Method
+# Newtonian Method and Elasto Plastic Modeling
 
 
 
@@ -12,27 +12,29 @@
 
 
 
-ME 700 Assignment 1 - Newton Solver 
+ME 700 Assignment 1 - Newtonian Method Solver & Elasto Plastic Modeling (Isotropic Hardening and Kinematic Hardening)
 
-This tutorial aims to show a user how to use the "Newton_Method" function to solve difficult, multi-variable, systems of equations. The function, as outlined below, allows the user to enter an equations, and a guess for the solution. The solver will then find the nearest solution to your guess if there are multiple solutions or the single solution if only one exists. 
+This tutorial aims to show a user how to use two distinct sets of functions. The first is a Newtonian Method solver meant to solve difficult, multi-variable, systems of equations. The function, as outlined below, allows the user to enter an equations, and a guess for the solution. The solver will then find the nearest solution to your guess if there are multiple solutions or the single solution if only one exists. 
 
 Example of calling the function:
 
-from NewtonMethod import Newton_Method as nm
+from Scripts import Newton_and_ElastoPlastic as nm
 nm.Newtonian_multi_DOF([3*x+1],[x],[-5])
 
-I used chatGPT while creating this function to learn how to read symbols from equation strings, to use the sympy library and to perform calculations by subbing in a number for a variable. Additionally, i used chatGPT to write the basic outline of my pytest functions before going back through them for accuracy. 
+The second set of functions allows the user to model isotropic hardening or kinematic hardening of a material. The tutorial on those functions will help illustrate how to run it
+
+I used chatGPT while creating these functions to learn how to read symbols from equation strings, to use the sympy library, to perform calculations by subbing in a number for a variable, to plot a basic chart, and to learn how to set up classes in python. Additionally, i used chatGPT to write the basic outline of my pytest functions before going back through them for accuracy. 
 
 I used Professor Lejeune's bisection_method repo as an outline to structure my README file to run test code. 
 
 To install this package, please begin by setting up a conda environment (mamba also works):
 ```bash
-conda create --name tl_Newton-env python=3.12
+conda create --name tl_Part1-env python=3.12
 ```
 Once the environment has been created, activate it:
 
 ```bash
-conda activate tl_Newton-env
+conda activate tl_Part1-env
 ```
 Double check that python is version 3.12 in the environment:
 ```bash
@@ -50,29 +52,34 @@ pip install -e .
 
 Test that the code is working with pytest:
 ```bash
-pytest -v --cov=Newtonian_Method --cov-report term-missing
+pytest -v --cov=Newton_and_ElastoPlastic --cov-report term-missing
 ```
-Code coverage should be 100%. Now you are prepared to write your own code based on this method and/or run the tutorial. 
+Code coverage should be nearly 100%. Now you are prepared to write your own code based on this method and/or run the tutorial. 
 
 If you would like, you can also open python and check to make sure that the import works properly:
 ```bash
 (tl_Newton-env) $ python
 Python 3.12.8 | packaged by Anaconda, Inc. | (main, Dec 11 2024, 11:37:13) [Clang 14.0.6 ] on darwin
 Type "help", "copyright", "credits" or "license" for more information.
->>> from NewtonMethod import Newton_Method as nm
+>>> from Scripts import Newton_and_ElastoPlastic as nm
 >>> nm.Welcome()
 'Welcome to Newtonian Method Solver!'
 ```
 If you are using VSCode to run this code, don't forget to set VSCode virtual environment to bisection-method-env.
 
-Open in Juypter
+Setup juypter notebook for tutorials
 
 ```bash
 pip install jupyter
 ```
 
+Run Newtonian Solver Tutorial
 ```bash
 jupyter notebook Newton_tutorial.ipynb
+```
+Run ElastoPlastic Modeling Tutorial
+```bash
+jupyter notebook ElastoPlastic_tutorial.ipynb
 ```
 ---
 
