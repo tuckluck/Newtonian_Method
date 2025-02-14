@@ -1,7 +1,7 @@
 import pytest
 import sympy as sp
 import numpy as np
-from NewtonMethod import Newton_Method as nm
+from Scripts import Newton_and_ElastoPlastic as nm
    
 
 
