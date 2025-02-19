@@ -1,0 +1,1 @@
+I used chatGPT while creating these functions to learn how to read symbols from equation strings, to use the sympy library, to perform calculations by subbing in a number for a variable, to plot a basic chart, and to learn how to set up classes in python. Additionally, i used chatGPT to write the basic outline of my pytest functions before going back through them for accuracy. 
